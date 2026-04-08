@@ -5,9 +5,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
+import os
 
-# Tell MLflow where to save experiment data
-# mlflow.set_tracking_uri("file:./mlruns")        # saves locally in an 'mlruns' folder
+os.makedirs("mlruns", exist_ok=True)
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("sentiment-v1")    # groups all runs under this name
 
 def train():
