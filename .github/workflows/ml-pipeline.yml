@@ -20,5 +20,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+
+      - name: Create MLflow directory
+        run: mkdir -p mlruns
+
+
       - name: Train the model
+        env:
+          MLFLOW_TRACKING_URI: file:./mlruns
         run: python src/train.py
