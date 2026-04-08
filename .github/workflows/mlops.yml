@@ -1,16 +1,18 @@
-name: ML Pipeline
+name: Simple ML Pipeline
 
 on:
   push:
-    branches: [master]
+    branches: [main]      # runs every time you push to main
 
 jobs:
-  pipeline:
-    runs-on: ubuntu-latest
+  run-pipeline:
+    runs-on: ubuntu-latest   # GitHub gives you a free Linux machine
 
     steps:
-      - name: Checkout code
+
+      - name: Get the code
         uses: actions/checkout@v4
+        # downloads your repo onto the GitHub machine
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -19,9 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+        # same as you running this on your laptop
 
-      - name: Train model
+      - name: Train the model
         run: python src/train.py
+        # if this crashes, the pipeline stops and shows red X
 
       - name: Build Docker image
-        run: docker build -t sentiment-api:${{ github.sha }} .
+        run: docker build -t sentiment-api .
+        # proves the app can be packaged successfully
