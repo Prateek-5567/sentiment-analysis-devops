@@ -8,8 +8,8 @@ from sklearn.model_selection import train_test_split
 import os
 
 os.makedirs("mlruns", exist_ok=True)
-mlflow.set_tracking_uri("file:./mlruns")
-mlflow.set_experiment("sentiment-v1")    # groups all runs under this name
+# mlflow.set_tracking_uri("file:./mlruns")
+mlflow.set_experiment("sentiment-v2")    # groups all runs under this name
 
 def train():
     # Load dataset
