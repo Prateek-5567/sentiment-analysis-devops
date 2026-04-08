@@ -12,7 +12,7 @@ mlflow.set_experiment("sentiment-v1")    # groups all runs under this name
 
 def train():
     # Load dataset
-    df = pd.read_csv("../data/reviews.csv")
+    df = pd.read_csv("data/reviews.csv")
     X = df["text"]    # input: the review text
     y = df["label"]   # output: 0 or 1
 
